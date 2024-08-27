@@ -1,0 +1,114 @@
+<!--Expenses-->
+{% extends "pos/base.html" %}
+
+        <!-- Page title  -->
+        {% block title %}Add Expenses{% endblock title %}
+        
+        <!-- Specific Page CSS goes HERE  -->
+        {% block stylesheets %}{% endblock stylesheets %}
+        
+        <!-- Page Heading -->
+        {% block heading %}Add Expenses{% endblock heading %}
+        
+        <!-- Page content  -->
+        {% block content %}
+        <!--Go back-->
+        <div class="row ml-0 mb-3">
+            <a href="{% url 'expenses:expenses_list' %}">
+                <button type="button" class="btn btn-info font-weight-bold">
+                    <i class="fas fa-long-arrow-alt-left mr-2"></i>
+                    Go back
+                </button>
+            </a>
+        </div>
+        
+        
+        <div class="row">
+            <div class="card col-md-8">
+                <div class="card-body">
+                    <form action="{% url 'expenses:expenses_add' %}" method="POST">
+                        {% csrf_token %}
+                        <div class="form-row">
+
+                            <div class="form-group col-md-6">
+                                <label for="state">Expenses</label>
+                                
+                                    <select name='category' class="form-control" required>
+                                        <option selected></option>
+                                        <option value="purchase">Purchase of Goods</option>
+                                        <option value="transport">Transportation</option>
+                                        <option value="repair">Repair</option>
+                                        <option value="repair">Salary</option>
+                                        <option value="repair">Offloadng</option>
+                                        <option value="repair">Interest Payment</option>
+                                    </select>
+                                    
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="state">Total</label>
+                                <input type="text" name="grand_total" placeholder="Total Amount" class="form-control" required>
+                            </div>
+                        </div>
+        
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <label for="inputDescription">Description</label>
+                                <textarea type="text" name="description" class="form-control" placeholder="About the expenses" required>
+                                </textarea>
+                            </div>
+                        </div>
+                       
+                        <input type="submit" value="Add Expenditure" class="btn btn-success font-weight-bold">
+                       
+                       
+                    </form>
+                </div>
+            </div>
+        </div>
+   
+        
+        <!-- Specific Page JS goes HERE  -->
+     
+        
+                    <!--End Left column-->
+
+                    {% comment %} <!--Righ column-->
+                    <div class="col-md-3 pr-0">
+                        <div class="card card-secondary">
+                            <div class="card-header">Expenses details</div>
+                            <div class="card-body">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <label for="expenses">Expenditure</label>
+                                    <select name="expenditure" class="form-control" id="searchbox_customers" required>
+                                        <option value="" selected disabled hidden>Select the Category</option>
+                                        {% for expense in expenses %}
+                                        <option value="{{expense.value}}">{{expense.label}}</option>
+                                        {% endfor %}
+                                    </select>
+                          
+                                <div class="form-group">
+                                    <label>Grand Total</label>
+                                    <div class="input-group">
+                                        <input name="grand_total" class="form-control" required>
+                                    </div>
+                                </div>
+                               
+
+                                <button type="submit" class="btn btn-success font-weight-bold">Create Expen</button>
+                            </div>
+                            <!--End card-body-->
+                    </div>
+                    <!--End Right column--> {% endcomment %}
+                </div>
+                <!--End row-->
+            </div>
+            <!--End card-body-->
+        </div>
+
+    </div>
+
+{% endblock content %}
+
+

@@ -1,0 +1,167 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Reciept</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="{% static 'css/sb-admin-2.min.css' %}" rel="stylesheet">
+    <!--Favicon-->
+    <link rel="icon" type="image/png" href="{% static 'favicon.png' %}"/>
+    
+    <style>
+        
+        @media print {
+           .content-screen {
+               display: none;
+            }
+            .content-print {
+               display: block;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<!-- Page Heading -->
+{% comment %} {% block heading %}Sale ID: {{sale.id}}, details{% endblock heading %} {% endcomment %}
+
+<!-- Page content  -->
+
+<!--Go back-->
+{% comment %} <div class="row ml-0 mb-3">
+    <a href="{% url 'sales:sales_list' %}">
+        <button type="button" class="btn btn-info font-weight-bold">
+            <i class="fas fa-long-arrow-alt-left mr-2"></i>
+            Go back
+        </button>
+    </a>
+</div> {% endcomment %}
+
+<!--Sale products and details-->
+<form action="{% url 'sales:sales_add' %}" class="saleForm" method="post">
+    <div class="row mt-3">
+        <div class="card col-md-12">
+            <div class="card-body ml-2">
+                <div class="row">
+                    <!--Left column-->
+                    <div class="col-md-12 pl-0">
+                        <div class="card card-secondary">
+                            <div class="card-header"><img class="img-profile pr-2" style="width:30px"
+                                src="{% static 'img/undraw_profile.svg' %}">Sale Reciept</div>
+                            
+                            <div class="card-body">
+                                <!--Products table-->
+                                <div class="card-body table-responsive p-0">
+                                    <table class="table table-hover text-nowrap" id="table_products">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Name</th>
+                                                <th>Price</th>
+                                                <th>Quantity</th>
+                                                <th>Total</th>
+                                                </tr>
+                                            </thead>
+                                        <tbody>
+                                            {% for detail in details %}
+                                            <tr>
+                                                <td>{{forloop.counter}}</td>
+                                                <td>{{detail.product.name}}</td>
+                                                <td>{{detail.price}}</td>
+                                                <td class="text-center">{{detail.quantity}}</td>
+                                                <td>{{detail.total_detail}}</td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!--End Products table-->
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <!--End top row-->
+
+                    <!--botom crowolumn-->
+                    <div class="col-md-12 pr-0">
+                        <div class="">
+                            <div class="mt-4 mb-3" style="display:flex">
+                                {% csrf_token %}
+                                <div class=" col-md-3">
+                                    <label>Subtotal</label>
+                                    <div class="input-group">
+                                        <input name="sub_total" class="form-control" value="{{sale.sub_total}}" readonly>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-3">
+                                    <label>Tax Amount</label>
+                                    <div class="input-group">
+                                        <input name="tax_amount" class="form-control" value="{{sale.tax_amount}}" readonly>
+                                    </div>
+                                </div>
+                            
+                                <div class="col-md-3">
+                                    <label>Grand Total</label>
+                                    <div class="input-group">
+                                        <input name="grand_total" class="form-control" value="{{sale.grand_total}}" readonly>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label>Amount payed</label>
+                                    <div class="input-group">
+                                        <input name="amount_payed" class="form-control" value="{{sale.amount_payed}}" readonly>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!--End card-body-->
+
+                            <button class="btn btn-primary ml-2 content-screen" onclick="window.print()">Print</button>
+                    </div>
+                    <!--End Right column-->
+                </div>
+                <!--End row-->
+            </div>
+            <!--End card-body-->
+        </div>
+
+    </div>
+</form>
+
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+<!-- Datatables -->
+
+{% comment %} <script src="{% static 'vendor/datatables/dataTables.bootstrap4.min.js' %}"></script> {% endcomment %}
+<!--Select2-->
+
+
+<script>
+    
+// Products datatable
+
+tblProducts = $('#table_products').DataTable({
+});
+                    
+</script>
+{% endblock javascripts %}
+
+</body>
