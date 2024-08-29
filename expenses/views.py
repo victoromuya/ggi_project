@@ -1,5 +1,4 @@
 import os
-
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
@@ -44,10 +43,7 @@ def expenses_add_view(request):
         #     "Category": request.POST.get('category'),
         #     "grand_total": request.POST["grand_total"],
         # }
-        
-       
-       
-        
+        2
         try:
              
             expense = Expenses(
