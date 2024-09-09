@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Sum, FloatField, F
 from django.db.models.functions import Coalesce
 from django.shortcuts import render
-from products.models import Product, Category
+from products.models import Product
 from sales.models import Sale
 from expenses.models import Expenses
 from customers.models import Customer
@@ -64,7 +64,7 @@ def index(request):
     context = {
         "active_icon": "dashboard",
         "products": Product.objects.all().count(),
-        "categories": Category.objects.all().count(),
+        
         "expenses": monthly_expenses[month_number-1],
         "profit_loss": profit_loss[month_number-1],
         "annual_earnings": annual_earnings,

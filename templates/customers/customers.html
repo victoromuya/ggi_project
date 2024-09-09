@@ -20,7 +20,7 @@
     <div class="row ml-0 mb-3">
         <a href="{% url 'customers:customers_add' %}">
             <button type="button" class="btn btn-success font-weight-bold">
-                    <i class="fas fa-plus mr-2"></i>
+                    <i class="fa fa-plus mr-2"></i>
                     Create new customer
             </button>
         </a>
@@ -36,7 +36,7 @@
                 <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>ID</th>
+                            <td>ID</td>
                             <th style="width:5%">#</th>
                             <th style="width:20%">Name</th>
                             <th style="width:25%">Email</th>
@@ -58,14 +58,14 @@
                                 <!--Update-->
                                 <a href="{% url 'customers:customers_update' c.id %}" class="text-decoration-none">
                                     <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="tooltip" title="Update customer">
-                                        <i class="fas fa-pen"></i>
+                                        <i class="fa fa-edit"></i>
                                     </button>
                                 </a>
                                 <!--Delete modal-->
                                 <!-- Button trigger modal -->
                                 <a class="text-decoration-none">
                                     <button rel="delete" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal">
-                                        <i class="fas fa-trash"></i>
+                                        <i class="fa fa-trash"></i>
                                     </button>
                                 </a>
                                     
@@ -125,20 +125,12 @@
         tblCategories = $('#dataTable').DataTable({
             dom: 'Bfrtip', // Buttons are draw at this element
             buttons: [
-                {
-                extend: 'print',
-                text: 'Print <i class="fas fa-file ml-2"></i>',
-                titleAttr: 'Print',
-                className: 'btn btn-info',
-                exportOptions: {
-                    columns: [ 0, 1, 2, 3 ,4 ]
-                }            
-                },
+               
                 {
                     extend: 'excelHtml5',
                     text: 'Download Excel <i class="fas fa-file-excel ml-2"></i>',
                     titleAttr: 'Download Excel',
-                    className: 'btn btn-success ml-2',
+                    className: 'btn btn-success ml-2 mb-3',
                     exportOptions: {
                         columns: [ 0, 1, 2, 3 ,4 ]
                     } 
@@ -147,7 +139,7 @@
                     extend: 'pdfHtml5',
                     text: 'Download PDF <i class="fas fa-file-pdf ml-2"></i>',
                     titleAttr: 'Download PDF',
-                    className: 'btn btn-danger ml-2',
+                    className: 'btn btn-danger ml-2 mb-3',
                     download: 'open',
                     orientation: 'vertical',
                     pageSize: 'A4',
@@ -217,7 +209,7 @@
         });
     });
 
-    // Alert when trying to delete a customer
+    {% comment %} // Alert when trying to delete a customer
     $('#dataTable tbody')
     // Event when whe try to delete a customer
     // We update the text, and href of the modal delete button
@@ -230,6 +222,6 @@
     new_delete_url  = 'delete/' + customer_id;
     document.getElementById("updateThisText").innerHTML = "Are you sure you want to delete the customer:  " + customer_name + "?";
     document.getElementById("updateThisURL").href=new_delete_url;
-    });
+    }); {% endcomment %}
 </script>
 {% endblock javascripts %}

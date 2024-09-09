@@ -22,11 +22,11 @@
                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                             Avg Earning per Month
                         </div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{avg_month}} $</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">N {{avg_month}}</div>
                     </div>
-                    <div class="col-auto">
-                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                    </div>
+                    {% comment %} <div class="col-auto">
+                        <i class="fa fa-calendar fa-2x text-gray-300"></i>
+                    </div> {% endcomment %}
                 </div>
             </div>
         </div>
@@ -41,11 +41,11 @@
                         <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                             Earnings (Annual)
                         </div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{annual_earnings}} $</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">N {{annual_earnings}} </div>
                     </div>
-                    <div class="col-auto">
-                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                    </div>
+                    {% comment %} <div class="col-auto">
+                        <i class="fa fa-dollar fa-2x text-gray-300"></i>
+                    </div> {% endcomment %}
                 </div>
             </div>
         </div>
@@ -57,12 +57,12 @@
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                            Total Expenses</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{expenses}} $</div>
+                            Monthly Expenses</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">N {{expenses}}</div>
                     </div>
-                    <div class="col-auto">
-                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                    </div>
+                    {% comment %} <div class="col-auto">
+                        <i class="fa fa-dollar fa-2x text-gray-300"></i>
+                    </div> {% endcomment %}
                 </div>
             </div>
         </div>
@@ -83,32 +83,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-auto">
-                        <i class="fas fa-fw fa-tag fa-2x text-gray-300"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Categories Card -->
-    <div class="col-xl-3 col-md-6 mb-4">
-        <div class="card border-left-info shadow h-100 py-2">
-            <div class="card-body">
-                <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                            Registered Categories
-                        </div>
-                        <div class="row no-gutters align-items-center">
-                            <div class="col-auto">
-                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{categories}}</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-auto">
-                        <i class="fas fa-fw fa-tag fa-2x text-gray-300"></i>
-                    </div>
+                    {% comment %} <div class="col-auto">
+                        <i class="fa fa-fw fa-tag fa-2x text-gray-300"></i>
+                    </div> {% endcomment %}
                 </div>
             </div>
         </div>
@@ -126,13 +103,16 @@
                         </div>
                         <div class="row no-gutters align-items-center">
                             <div class="col-auto">
-                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{profit_loss}}</div>
+                                <div class="h5 mb-0 mr-3 font-weight-bold  
+                                {% if profit_loss > 1000 %} text-gray-800 {% else %} text-danger {% endif %}">
+                                    N {{profit_loss}}
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-auto">
-                        <i class="fas fa-fw fa-tag fa-2x text-gray-300"></i>
-                    </div>
+                    {% comment %} <div class="col-auto">
+                        <i class="fa fa-fw fa-tag fa-2x text-gray-300"></i>
+                    </div> {% endcomment %}
                 </div>
             </div>
         </div>
@@ -175,15 +155,15 @@
                 </div>
                 <div class="mt-4 text-center small">
                     <div class="mr-2">
-                        <i class="fas fa-circle text-primary mr-2"></i>
+                        <i class="fa fa-circle text-primary mr-2"></i>
                         {{top_products_names_list.0}}
                     </div>
                     <div class="mr-2 mt-2">
-                        <i class="fas fa-circle text-success mr-2"></i>
+                        <i class="fa fa-circle text-success mr-2"></i>
                         {{top_products_names_list.1}}
                     </div>
                     <div class="mr-2 mt-2">
-                        <i class="fas fa-circle text-info mr-2"></i>
+                        <i class="fa fa-circle text-info mr-2"></i>
                         {{top_products_names_list.2}}
                     </div>
                 </div>

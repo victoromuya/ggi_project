@@ -1,7 +1,7 @@
 {% extends "pos/base.html" %}
 {% load static %}
 <!-- Page title  -->
-{% block title %}Sales{% endblock title %}
+{% block title %}Expenses{% endblock title %}
 
 <!-- Specific Page CSS goes HERE  -->
 {% block stylesheets %}
@@ -20,7 +20,7 @@
     <div class="row ml-0 mb-3">
         <a href="{% url 'expenses:expenses_add' %}">
             <button type="button" class="btn btn-success font-weight-bold">
-                    <i class="fas fa-plus mr-2"></i>
+                    <i class="fa fa-plus mr-2"></i>
                     Create new expenses
             </button>
         </a>
@@ -102,35 +102,27 @@
         tblCategories = $('#dataTable').DataTable({
             dom: 'Bfrtip', // Buttons are draw at this element
             buttons: [
-                {
-                extend: 'print',
-                text: 'Print <i class="fas fa-file ml-2"></i>',
-                titleAttr: 'Print',
-                className: 'btn btn-info',
-                exportOptions: {
-                    columns: [ 0, 1, 2, 3 ,4, 5]
-                }            
-                },
+                
                 {
                     extend: 'excelHtml5',
                     text: 'Download Excel <i class="fas fa-file-excel ml-2"></i>',
                     titleAttr: 'Download Excel',
-                    className: 'btn btn-success ml-2',
+                    className: 'btn btn-success ml-2 mb-3',
                     exportOptions: {
-                        columns: [ 0, 1, 2, 3 ,4, 5 ]
+                        columns: [ 0, 1, 2, 3 ,4 ]
                     } 
                 },
                 {
                     extend: 'pdfHtml5',
                     text: 'Download PDF <i class="fas fa-file-pdf ml-2"></i>',
                     titleAttr: 'Download PDF',
-                    className: 'btn btn-danger ml-2',
+                    className: 'btn btn-danger ml-2 mb-3',
                     download: 'open',
                     orientation: 'vertical',
                     pageSize: 'A4',
                     title: '*',
                     exportOptions: {
-                        columns: [ 0, 1, 2, 3 ,4 ,5]
+                        columns: [ 0, 1, 2, 3 ,4 ]
                     },
                     customize: function (doc) {
                         doc.styles = {
@@ -157,7 +149,7 @@
                                 alignment: 'center'
                             }
                         };
-                        doc.content[1].table.widths = ['10%', '10%', '30%', '20%', '20%', '10%'];
+                        doc.content[1].table.widths = ['10%', '10%', '30%', '30%', '20%'];
                         doc.content[1].margin = [0, 35, 0, 0];
                         doc.content[1].layout = {};
                         doc['footer'] = (function (page, pages) {
@@ -182,11 +174,17 @@
             deferRender: true,
             columnDefs: [
                 {
+                    targets: [0],
+                    visible: false,
+                    searchable: false,
+                },
+                {
                     targets: [-1], // column index (start from 0)
                     orderable: false, // set orderable false for selected columns
                 }
             ],
         });
     });
+
 </script>
 {% endblock javascripts %}
