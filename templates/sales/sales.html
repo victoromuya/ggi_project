@@ -6,8 +6,8 @@
 <!-- Specific Page CSS goes HERE  -->
 {% block stylesheets %}
 <!-- Datatables -->
-<link href="{% static 'vendor/datatables/dataTables.bootstrap4.min.css ' %}" rel="stylesheet">
-<link href="{% static 'css/pagination_buttons.css ' %}" rel="stylesheet">
+{% comment %} <link href="{% static 'vendor/datatables/dataTables.bootstrap4.min.css ' %}" rel="stylesheet"> {% endcomment %}
+{% comment %} <link href="{% static 'css/pagination_buttons.css ' %}" rel="stylesheet"> {% endcomment %}
 {% endblock stylesheets %}
 
 <!-- Page Heading -->
@@ -85,8 +85,8 @@
 <!-- Specific Page JS goes HERE  -->
 {% block javascripts %}
 <!-- Datatables -->
-<script src="{% static 'vendor/datatables/jquery.dataTables.min.js' %}"></script>
-<script src="{% static 'vendor/datatables/dataTables.bootstrap4.min.js' %}"></script>
+{% comment %} <script src="{% static 'vendor/datatables/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'vendor/datatables/dataTables.bootstrap4.min.js' %}"></script> {% endcomment %}
 <!--Datatable buttons-->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
