@@ -3,9 +3,11 @@
 <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar" style="background:#17a673">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{% url 'pos:index' %}">
-       
-        <div class="sidebar-brand-text mx-3">GGI Sales</div>
+    <a class="sidebar-brand d-flex align-items-center justify-content-left bg-white" 
+    href="{% url 'pos:index' %}">
+        <div class="sidebar-brand-icon">
+            <img class="img-profile pr-2" style="width:40px" src="{% static 'img/LOGO.png' %}">
+        </div>
     </a>
 
     <!-- Divider -->
@@ -49,7 +51,7 @@
     </li>
 
     <!-- Divider -->
-    <hr class="sidebar-divider d-none d-md-block">
+    <hr class="sidebar-divider d-none d-md-block my-0">
 
      <!-- Nav Item - Expenses -->
      <li class="{% if "expenses" in active_icon %} nav-item active {% else %} nav-item {% endif %}">

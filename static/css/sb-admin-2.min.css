@@ -2696,7 +2696,7 @@ fieldset:disabled a.btn {
 
 .btn-primary {
     color: #fff;
-    background-color: #304529;
+    background-color: #3b5632;
     border-color: #304529;
 }
 
@@ -12106,7 +12106,7 @@ a:focus {
 }
 
 .bg-login-image {
-    background: url(../img/logo.jpeg);
+    /* background: url(../img/logo.jpeg); */
     background-position: center;
     background-size: cover
 }
